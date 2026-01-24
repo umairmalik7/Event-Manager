@@ -1,10 +1,13 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main{
+    static Organizer organizer = null;
+    static ArrayList<Event> events = new ArrayList<Event>();
     static Scanner input = new Scanner(System.in);
 
-    public static void registerOrganier(){
+    public static Organizer registerOrganizer(){
         System.out.println("No Organizer found");
         System.out.println("Please register an organizer!\n");
         System.out.print("Enter Organizer Name: ");
@@ -14,7 +17,10 @@ public class Main{
         System.out.print("Enter Organizer ContactNo: ");
         String organizer_contact_no = input.next();
         Organizer o1 = new Organizer(organizer_name, organizer_email, organizer_contact_no);
+        return o1;
     }
+
+
     public static Venue selectVenue(){
         System.out.println(" --- Enter Venue details for the venue ---");
         System.out.print("Venue ID:");
@@ -37,8 +43,8 @@ public class Main{
         Category c = new Category(category_id, category_name);
         return c;
     }
-    public static String createEvent(){
-        System.out.println("Enter Event Details");
+    public static void createEvent(){
+        System.out.println("\n --- Enter Event Details ---");
         System.out.print("Event Name: ");
         String event_name = input.next();
         LocalDateTime event_time = LocalDateTime.of(2026,01,29,13,30,00);
@@ -48,21 +54,38 @@ public class Main{
         int  no_of_tickets = input.nextInt();
         System.out.print("Enter ticket price: ");
         int  ticket_price = input.nextInt();
-        Event e1 = new Event(event_name,event_time,selectedVenue,selectedCategory, no_of_tickets, ticket_price);
-        String details = e1.display();
-        return details;
+        Event e1 = new  Event(event_name,event_time,selectedVenue,organizer,selectedCategory, no_of_tickets, ticket_price);
+        events.add(e1);
     }
 
-    public static void organizerMenu() {
-        System.out.println("Organizer menu");
+    public static  void show_organizer_menu(){
         System.out.println("1. Create Event");
+        System.out.println("2. Display Events");
+        System.out.println("3. Exit");
         System.out.print("Enter choice: ");
+    }
+    public static void Organizer() {
+        System.out.println("Organizer menu");
+        Main.show_organizer_menu();
         int choice = input.nextInt();
-        if (choice == 1){
-            String event = Main.createEvent();
-            System.out.println(event);
+        while (choice != 3){
+            if (choice == 1){
+                Main.createEvent();
+                Main.show_organizer_menu();
+                choice = input.nextInt();
+            }
+            else if (choice == 2){
+                for(Event e : events){
+                    System.out.println(e.toString());
+                }
+                Main.show_organizer_menu();
+                choice = input.nextInt();
+            } else if (choice == 3) {
+                break;
+            }
         }
     }
+
     public static void initializeSystem() {
             System.out.println(" ===== Welcome to Event Management System =====");
             System.out.println("1. Organizer");
@@ -70,15 +93,22 @@ public class Main{
             System.out.print("you are: ");
             int choice =  input.nextInt();
             if (choice == 1){
-                Main.registerOrganier();
-                Main.organizerMenu();
+                if (organizer == null){
+                    organizer = Main.registerOrganizer();
+                }
+                else {
+                    organizer.toString();
+                }
+                Main.Organizer();
             }
-
         }
 
     public static void main(String[] args){
 
-        Main.initializeSystem();
+        for (int i = 0; i < 2 ; i++) {
+            Main.initializeSystem();
+        }
+
 
 
     }

@@ -10,4 +10,8 @@ class Venue {
         this.venueAddress = venueAddress;
         this.venueCapacity = venueCapacity;
     }
+
+    public String toString(){
+        return  "Venue_ID:" + this.venueID + "\nVenue_Name:" + this.venueName + "\nVenue_Address:" + this.venueAddress + "\nVenue_Capacity:" + this.venueCapacity;
+    }
 }
