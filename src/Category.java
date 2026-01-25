@@ -1,6 +1,6 @@
 class Category {
     private int  categoryID;
-    private String categoryName;
+    String categoryName;
 
     public Category(int categoryID, String categoryName) {
         this.categoryID = categoryID;

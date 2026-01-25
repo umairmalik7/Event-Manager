@@ -25,7 +25,7 @@ class Event{
         return  "\n--- Event Details ---" + "\nName: " +  this.eventName +"\nDate: " + this.eventDate + "\n" + this.eventLocation.toString() + this.organizer + "\n" + this.category.toString() + "\nTotal_Tickets" + this.no_of_tickets + "\nTicket_Price" + this.ticketPrice;
     }
     public String display(){
-        return  "\n--- Event Details ---" + "\nName: " + this.eventName + "\nDate: " + this.eventDate + "\n--- Venue Details ---\n" + this.eventLocation.toString() + "\n --- Category details ---\n" + this.category.toString() + "\nTotal_Tickets: " + this.no_of_tickets + "\nTicket_Price: " + this.ticketPrice;
+        return   this.eventName + " | Date: " + this.eventDate + this.eventLocation.display() + " | Ticket_Price: " + this.ticketPrice;
     }
 
 }

@@ -14,4 +14,7 @@ class Venue {
     public String toString(){
         return  "Venue_ID:" + this.venueID + "\nVenue_Name:" + this.venueName + "\nVenue_Address:" + this.venueAddress + "\nVenue_Capacity:" + this.venueCapacity;
     }
+    public String display(){
+        return " | Venue: " + this.venueName + " | Address: " + this.venueAddress ;
+    }
 }
