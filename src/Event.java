@@ -21,6 +21,12 @@ class Event{
         this.no_of_tickets = no_of_tickets;
         this.ticketPrice = ticketPrice;
     }
+    public int getTicketPrice() {
+        return ticketPrice;
+    }
+    public int getNo_of_tickets(){
+        return no_of_tickets;
+    }
     public String toString(){
         return  "\n--- Event Details ---" + "\nName: " +  this.eventName +"\nDate: " + this.eventDate + "\n" + this.eventLocation.toString() + this.organizer + "\n" + this.category.toString() + "\nTotal_Tickets" + this.no_of_tickets + "\nTicket_Price" + this.ticketPrice;
     }
