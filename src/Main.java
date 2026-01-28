@@ -1,12 +1,16 @@
+import jdk.jfr.Event;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main{
     static Organizer organizer = null;
-    static ArrayList<Event> events = new ArrayList<Event>();
     static ArrayList<Participant> participants = new ArrayList<Participant>();
+    EventManager em = new EventManager();
+    ArrayList<Event> events = em.getEvent();
     static Scanner input = new Scanner(System.in);
+
 
     public static Organizer registerOrganizer(){
         System.out.println("No Organizer found");
